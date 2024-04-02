@@ -34,6 +34,20 @@ android {
         jvmTarget = "11"
     }
 
+    flavorDimensions ("testModule")
+    productFlavors() {
+        create("module1") {
+            resValue("string", "demo_app_name", "App module 1")
+            applicationIdSuffix = ".module1"
+            versionNameSuffix = ".module1"
+        }
+        create("module2") {
+            resValue("string", "demo_app_name", "App module 2")
+            applicationIdSuffix = ".module2"
+            versionNameSuffix = ".module2"
+        }
+    }
+
 }
 
 dependencies {
@@ -44,4 +58,6 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(project(":module1"))
+    implementation(project(":module2"))
 }
